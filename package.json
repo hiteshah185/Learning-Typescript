@@ -4,10 +4,17 @@
     "description": "Simple Electronics calculator build using Typescript.",
     "main": "index.js",
     "author": "Hitesh A H",
+    "scripts": {
+        "start": "webpack serve"
+    },
     "devDependencies": {
         "ts-loader": "9.5.1",
         "typescript": "5.2.2",
         "webpack-cli": "5.1.4",
         "webpack-dev-server": "4.15.1"
-    }
+    },
+    "options": {
+        "allowedHosts": ["localhost", ".localhost"],
+        "proxy": "https://localhost:3386/"
+      }
 }
