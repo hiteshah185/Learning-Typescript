@@ -5,6 +5,9 @@
     "main": "index.js",
     "author": "Hitesh A H",
     "devDependencies": {
-        "typescript": "5.2.2"
+        "ts-loader": "9.5.1",
+        "typescript": "5.2.2",
+        "webpack-cli": "5.1.4",
+        "webpack-dev-server": "4.15.1"
     }
 }
