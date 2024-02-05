@@ -1,0 +1,10 @@
+{
+    "name": "ElectronicCalcEngine",
+    "version": "1.0.0",
+    "description": "Simple Electronics calculator build using Typescript.",
+    "main": "index.js",
+    "author": "Hitesh A H",
+    "devDependencies": {
+        "typescript": "5.2.2"
+    }
+}
