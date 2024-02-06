@@ -18,6 +18,6 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    inline: true
+    inline: false
   }
 };
