@@ -1,3 +1,5 @@
+/// <reference path="interfacesExample.ts" />
+
 class Developer {
     public department!: string;
     private _title!: string;
