@@ -1,0 +1,10 @@
+import MockAPIServer from "./APIServer";
+import { JsonDB } from 'node-json-db';
+import { Config } from 'node-json-db/dist/lib/JsonDBConfig'
+import Person from "./entities/Person";
+
+export const apiServer = new MockAPIServer();
+export const db = new JsonDB(new Config("entityDatabase", true, true, '/'));
+
+apiServer.addEntity<Person>();
+apiServer.start();
