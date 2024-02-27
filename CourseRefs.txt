@@ -1,0 +1,4 @@
+Linkedin-Learning:
+https://www.linkedin.com/learning/typescript-essential-training-14687057
+Pluralsight:
+https://app.pluralsight.com/paths/skills/typescript-core-language
