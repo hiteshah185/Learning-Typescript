@@ -23,6 +23,15 @@ export class EntityFactory {
 }
 export default class BaseEntity implements IEntity {
     getPersistenceObject() {
-        return {};
+        let output = {};
+        const persistedProperties = Reflect.getMetadata("entity:properties", this);
+        const idProperty = Reflect.getMetadata("entity:id", this);
+        output[idProperty] = this[idProperty];
+        for (const prop of persistedProperties) {
+            if (this[prop]) {
+                output[prop] = this[prop];
+            }
+        }
+        return output;
     }
 }
