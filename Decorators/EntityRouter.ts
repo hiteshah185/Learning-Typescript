@@ -1,6 +1,7 @@
 import express, { Router, Request, Response } from "express";
 import BaseEntity, { EntityTypeInstance } from "./entities/Base";
 import { db } from "./MockServerAppMain";
+import { logRoute } from "./decorators/log";
 
 export default class EntityRouter<T extends BaseEntity>{
     private _router: Router;
@@ -44,6 +45,7 @@ export default class EntityRouter<T extends BaseEntity>{
     private createEntity(req: Request, res: Response) {
 
     }
+    @logRoute
     private fetchAllEntities(req: Request, res: Response) {
         let data = {};
         data = db.getData(`/${this.name}`);

@@ -1,4 +1,4 @@
-import { entity, id, persist } from "../decorators/entity";
+import { entity, id, isEmail, isRequired, persist } from "../decorators";
 import BaseEntity from "./Base";
 export enum Department {
     TRV = 'Trivandrum Team',
@@ -9,10 +9,12 @@ export default class Person extends BaseEntity {
     @id
     id: string;
     @persist
+    @isRequired
     fistName: string;
     @persist
     lastName: string;
     @persist
+    @isEmail
     email: string;
     @persist
     department: Department
