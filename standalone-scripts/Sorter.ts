@@ -122,6 +122,42 @@ class Sorter {
     }
     return this.quickSort(left).concat(pivotEl, this.quickSort(right));
   }
+
+  //Time Complexity:O(nlogn)
+  //Space Complexity: O(1)
+  heapSort(array: number[]): number[] {
+    let n = array.length;
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+      this.heapify(array, n, i);
+    }
+    for (let i = n - 1; i > 0; i--) {
+      let temp = array[0];
+      array[0] = array[i];
+      array[i] = temp;
+      this.heapify(array, i, 0);
+    }
+
+    return array;
+  }
+
+  heapify(array: number[], n: number, i: number): void {
+    let largest: number = i;
+    let left: number = 2 * i + 1;
+    let right = 2 * i + 2;
+    if (left < n && array[left] > array[largest]) {
+      largest = left;
+    }
+    if (right < n && array[right] > array[largest]) {
+      largest = right;
+    }
+    if (largest !== i) {
+      let swap = array[i];
+      array[i] = array[largest];
+      array[largest] = swap;
+
+      this.heapify(array, n, largest);
+    }
+  }
 }
 
 const sampleArray: number[] = [102, 3, 5, 99];
@@ -132,4 +168,9 @@ const sorter = new Sorter(sampleArray);
 // console.log("Selection Sorted:", sorter.selectionSort());
 // console.log("Insertion Sorted:", sorter.insertionSort());
 // console.log("Merge Sorted:", sorter.mergeSort(sampleArray));
-console.log("Quick Sorted:", sorter.quickSort(sampleArray));
+// console.log("Quick Sorted:", sorter.quickSort(sampleArray));
+console.log("Heap Sorted:", sorter.heapSort(sampleArray));
+
+// Ref:
+// https://www.youtube.com/watch?v=mTLa9b_Sm3s
+// https://dev.to/alexmercedcoder/introduction-to-sorting-algorithms-in-javascript-b60
