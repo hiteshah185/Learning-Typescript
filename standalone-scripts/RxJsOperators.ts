@@ -10,6 +10,8 @@ import {
   first,
   debounceTime,
   catchError,
+  switchMap,
+  mergeMap,
 } from "rxjs/operators";
 
 //Creation Operators: of, from
@@ -54,6 +56,17 @@ errorSource.subscribe(
   }
 );
 
+const observable1 = from([11, 22, 33, 44, 55]);
+const observable2 = from(["a", "b", "c"]);
+observable1
+  .pipe(switchMap((val) => of(`-Value-> ${val}`)))
+  .subscribe((val) => print(`SwitchMap:${val}`));
+observable2
+  .pipe(
+    map((val) => val.toUpperCase()),
+    mergeMap((val) => of(`-Value-> ${val}`))
+  )
+  .subscribe((val) => print(`MergeMap:${val}`));
 function print(message: string) {
   console.log(message);
 }
