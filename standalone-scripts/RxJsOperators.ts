@@ -9,6 +9,7 @@ import {
   takeUntil,
   first,
   debounceTime,
+  catchError,
 } from "rxjs/operators";
 
 //Creation Operators: of, from
@@ -37,6 +38,21 @@ let source3 = interval(1000);
 source3
   .pipe(take(3), takeUntil(source2.pipe(first())), debounceTime(500))
   .subscribe((val) => print(`Debounced:${val}`));
+
+const errorSource = from([1, 2, 33]).pipe(
+  catchError((err) => of("Error Handled"))
+);
+errorSource.subscribe(
+  (val) => {
+    print(`Value: ${val}`);
+  },
+  (err) => {
+    print(`Error: ${err}`);
+  },
+  () => {
+    print(`Completed`);
+  }
+);
 
 function print(message: string) {
   console.log(message);
